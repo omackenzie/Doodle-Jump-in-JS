@@ -46,9 +46,9 @@ function block() {
             }
 
             if (this.direction === "right") {
-                this.x += 1;
+                this.x += 2.5;
             } else {
-                this.x -= 1;
+                this.x -= 2.5;
             }
         }
 
