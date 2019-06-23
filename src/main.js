@@ -11,7 +11,7 @@ window.addEventListener('keydown',this.keydown,false);
 window.addEventListener('keyup',this.keyup,false);
 
 //Variables
-const gravity = 0.06;
+const gravity = 0.34;
 var holdingLeftKey = false;
 var holdingRightKey = false;
 var keycode;
@@ -23,6 +23,13 @@ var yDistanceTravelled = 0;
 
 var blocks = [];
 var powerups = [];
+
+//Time variables
+var fps = 60;
+var now;
+var then = Date.now();
+var interval = 1000/fps;
+var delta;
 
 function keydown(e) {
     if (e.keyCode === 65) {
@@ -85,25 +92,32 @@ blocks[0].powerup = 0;
 blockSpawner();
 
 function loop() {
-    var backgroundImage = new Image();
-    backgroundImage.src = "Sprites/background.png";
-    ctx.drawImage(backgroundImage, 0, 0, screenWidth, screenHeight) 
-
-    for (var i = 0; i < blocks.length; i++) {
-        if (blocks[i] !== 0) {
-            blocks[i].update();
-            blocks[i].draw();
-        }
-    }
-
-    player.update();
-    player.draw();
-
-    showScore();
-
-    ctx.fill();
-
     requestAnimationFrame(loop);
+
+    //This sets the FPS to 60
+    now = Date.now();
+    delta = now - then;
+     
+    if (delta > interval) {
+        var backgroundImage = new Image();
+        backgroundImage.src = "Sprites/background.png";
+        ctx.drawImage(backgroundImage, 0, 0, screenWidth, screenHeight) 
+
+        for (var i = 0; i < blocks.length; i++) {
+            if (blocks[i] !== 0) {
+                blocks[i].update();
+                blocks[i].draw();
+            }
+        }
+
+        player.update();
+        player.draw();
+
+        showScore();
+
+        ctx.fill();
+        then = now - (delta % interval);
+    }
 }
 
 loop();
