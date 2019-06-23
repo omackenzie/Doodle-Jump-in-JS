@@ -5,7 +5,7 @@ var player = new function() {
     this.img.src = "Sprites/rightPlayer.png";
     this.width = 80;
     this.height = 80;
-    this.xSpeed = 2.8;
+    this.xSpeed = 6.7;
     this.ySpeed = 0;
     this.springBootsDurability = 0;
     this.direction = "left";
@@ -90,7 +90,7 @@ var player = new function() {
     }
     
     this.jump = function(powerup, type) {
-        this.ySpeed = -5.5;
+        this.ySpeed = -13.2;
 
         if (powerup === "springBoots") {
             this.springBootsDurability = 6;
@@ -98,12 +98,12 @@ var player = new function() {
         
         if (type === 0) {
             if (powerup === "spring") {
-                this.ySpeed = -9;
+                this.ySpeed = -20;
             } 
         }
 
         if (this.springBootsDurability !== 0) {
-            this.ySpeed = -9;
+            this.ySpeed = -20;
             this.springBootsDurability -= 1;
         }  
     }
