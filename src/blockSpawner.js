@@ -31,9 +31,9 @@ function blockSpawner() {
             if (blocks[i].type === "break" || blocks[i-1].type === "break") {
                 blocks[i].y = (blocks[i-1].y) - (((Math.random()*(80 + (difficulty * 25))) + 30) / 2);
             } else if (blocks[i].monster !== 0) {
-                blocks[i].y = (blocks[i-1].y) - ((Math.random()*(80 + (difficulty*25)))+10);
+                blocks[i].y = (blocks[i-1].y) - ((Math.random()*(80 + (difficulty*25)))+50);
             }  else if (blocks[i-1].monster !== 0) {
-                blocks[i].y = (blocks[i-1].y) - ((Math.random()*(80 + (difficulty*25)))+10);
+                blocks[i].y = (blocks[i-1].y) - ((Math.random()*(80 + (difficulty*25)))+50);
             }
             else {
                 blocks[i].y = (blocks[i-1].y) - ((Math.random()*(80 + (difficulty*25)))+30);
