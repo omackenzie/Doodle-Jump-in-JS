@@ -1,7 +1,7 @@
 function spawnBlock() {
     var blockChances = {
         "break": 15,
-        "sideways": Math.round(30 / difficulty)
+        "sideways": Math.round(15 / difficulty)
     };
 
     if (Math.round(Math.random() * blockChances["break"]) === 0) {
